@@ -1,16 +1,16 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Productos</title>
-</head>
-<body>
-    <h1>Productos Disponibles</h1>
-    <ul>
-        {{#each products}}
-        <li>{{this.title}} - ${{this.price}}</li>
-        {{/each}}
-    </ul>
-</body>
-</html>
+<h1>Lista de Productos</h1>
+<ul>
+    {{#each products}}
+        <li>
+            <h3>{{this.name}}</h3>
+            <p>{{this.description}}</p>
+            <p>Precio: ${{this.price}}</p>
+            <a href="/products/{{this._id}}">Ver detalles</a>
+            <button onclick="addToCart('{{this._id}}')">Agregar al carrito</button>
+        </li>
+    {{/each}}
+</ul>
+
+{{#if hasPrevPage}}<a href="?page={{prevPage}}">Página anterior</a>{{/if}}
+Página {{page}} de {{totalPages}}
+{{#if hasNextPage}}<a href="?page={{nextPage}}">Página siguiente</a>{{/if}}
